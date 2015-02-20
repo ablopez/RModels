@@ -41,8 +41,8 @@ Further analysis to these variables must be then performed to answer the questio
 p<-ggplot(data = mtcars, aes(x = interaction(am), y = mpg)) + geom_boxplot()
 ```
 
-- Please Refer to Routine 1 Determing relevant variables
-Please refer to routine 1 in Appendix.
+-  Thi code determines close correlated variables.
+ 
 
 ```{r echo=TRUE, results="hide", eval=FALSE}
 mpgcor <- abs(data.frame(cor(mtcars))[1, ]);mpgcor1 <- order(mpgcor, decreasing = TRUE);
@@ -207,12 +207,14 @@ plot(model_3)
 ##Additional Section showing computations 
 This section is additonal. Athough it's not required in the project I decided to inlcude it as additional appendix.
 
-Routine 1. Calculates and extract the relevant variables
+This code calculates and extract the relevant variables
 ```{r}
 data(mtcars)
 mpgcor <- abs(data.frame(cor(mtcars))[1, ]);mpgcor1 <- order(mpgcor, decreasing = TRUE)
 mpgcor2<- mpgcor1[1:5]; names(mtcars)[mpgcor2][1:5]
 ```
+
+The following code computes the 'models: m_0, m_1, m_2, m_3'
 
 1) m_0 tests 'mg vs am' 
 ```{r}
