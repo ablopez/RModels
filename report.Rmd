@@ -158,45 +158,11 @@ summary(model_3)
 ```
 
 #Appendix 
+
 ```{r echo=FALSE , results="hide"}
 library(ggplot2)
 library(gclus)
 ```
-
-### Computations 
-Routine 1. Calculates and extract the relevant variables
-```{r}
-data(mtcars)
-mpgcor <- abs(data.frame(cor(mtcars))[1, ]);mpgcor1 <- order(mpgcor, decreasing = TRUE)
-mpgcor2<- mpgcor1[1:5]; names(mtcars)[mpgcor2][1:5]
-```
-
-1) m_0 tests 'mg vs am' 
-```{r}
-model_0 <- lm(mpg~am, data=mtcars)    
-summary(model_0)
-```
-2) m_1 is full model, which tests mpg as an outcome and other the variables as regressors
-```{r}
-model_1 <-  lm(mpg~., data=mtcars)
-summary(model_1)
-```
-3) m_2 executes the Stepwise Model. 
-```{r  , echo=TRUE , results="hide"}
-model_2 <- step(model_1, direction = "both")
-```
-
-```{r}
-summary(model_2)
-``` 
-
-4) m_3 factoring mg and am. 
-
-```{r}
-model_3 <-lm(mpg ~ wt + qsec + am + wt:am, data=mtcars)
-summary(model_3)
-```
-
 # Diagrams and Plots
 ###Figure 1 mpg vs am
 ```{r, fig.height=2.5, fig.width=5, echo=FALSE}
@@ -237,4 +203,40 @@ ggplot(mtcars, aes(x=wt, y=mpg, group=am, color=am, height=3, width=3)) + geom_p
 par(mfrow = c(2, 2))
 plot(model_3)
 ```
+
+##Additional Section showing computations 
+This section is additonal. Athough it's not required in the project I decided to inlcude it as additional appendix.
+
+Routine 1. Calculates and extract the relevant variables
+```{r}
+data(mtcars)
+mpgcor <- abs(data.frame(cor(mtcars))[1, ]);mpgcor1 <- order(mpgcor, decreasing = TRUE)
+mpgcor2<- mpgcor1[1:5]; names(mtcars)[mpgcor2][1:5]
+```
+
+1) m_0 tests 'mg vs am' 
+```{r}
+model_0 <- lm(mpg~am, data=mtcars)    
+summary(model_0)
+```
+2) m_1 is full model, which tests mpg as an outcome and other the variables as regressors
+```{r}
+model_1 <-  lm(mpg~., data=mtcars)
+summary(model_1)
+```
+3) m_2 executes the Stepwise Model. 
+```{r  , echo=TRUE , results="hide"}
+model_2 <- step(model_1, direction = "both")
+```
+
+```{r}
+summary(model_2)
+``` 
+
+4) m_3 factoring mg and am. 
+
+```{r}
+model_3 <-lm(mpg ~ wt + qsec + am + wt:am, data=mtcars)
+summary(model_3)
+``````
 
