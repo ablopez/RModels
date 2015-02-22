@@ -203,7 +203,7 @@ par(mfrow = c(2, 2))
 plot(model_3)
 ```
 
-## This just and informtional section showing computations#
+## This is just and informtional section showing computations#
 This section is additonal. Athough it's not required in the project I decided to inlcude it as additional information.
 
 This code calculates and extract the relevant variables
