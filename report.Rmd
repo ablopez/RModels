@@ -20,7 +20,7 @@ My analyis is broken down in 5 stages:
 *4 Best Model fit
 *5 Conclusions
 
-Note: Some code is shown throuhgout the exec summary to assist understanding the info required to generate the results under each section. Plots/Full computaions are found in the Appendix.
+Note: Some code is shown throuhgout the exec summary to assist understanding the info required to generate the results under each section. Plot are found in the Appendix.
 
 # Data Analysis
 Description: mtcars -> "The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973/74 models).
@@ -203,8 +203,8 @@ par(mfrow = c(2, 2))
 plot(model_3)
 ```
 
-##Additional Section showing computations 
-This section is additonal. Athough it's not required in the project I decided to inlcude it as additional appendix.
+## This just and informtional section showing computations#
+This section is additonal. Athough it's not required in the project I decided to inlcude it as additional information.
 
 This code calculates and extract the relevant variables
 ```{r}
