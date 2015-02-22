@@ -6,7 +6,7 @@ date: 'Feb - 2015 '
 output: pdf_document
 ---
 # Introduction
-This document describe the analysis to complete the final project for the course "Regression Models".
+This document describes the analysis to complete the final project for the course "Regression Models".
 It consists of a model to answer the questions:
 
 1 - Is an automatic or manual transmission better for MPG 
@@ -20,20 +20,19 @@ My analyis is broken down in 5 stages:
 *4 Best Model fit
 *5 Conclusions
 
-Note: Some code is shown throuhgout the exec summary to assist understanding the info required to generate the results under each section. Plots/Full computaions are found in Appendix.
+Note: Some code is shown throuhgout the exec summary to assist understanding the info required to generate the results under each section. Plots/Full computaions are found in the Appendix.
 
 # Data Analysis
 Description: mtcars -> "The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973/74 models).
 
-First, I  analyse the date set 'mtcars' to explore the relationship between all the variables andmiles per gallon (MPG) using criteria: 
+First, I  analysed the date set 'mtcars' to explore the relationship between all the variables and miles per gallon (MPG) using the following criteria: 
 a) A Box plot to compare mpg vs transmission type    
 
-b) Determining the variables are close correlated by using calculations assisted by a "pairs" graph (refer to Appendix fig 2)
+b) Determining the variables that are close correlated by using calculations assisted by a "pairs" graph (refer to Appendix fig 2)
 
 ### Observations: Data Analysis
 a) In a first instance, Figure 1 'plot boxplot' shows that manual transmission yields higher values of MPG than the automatic transmission.  
-b) However, the calculations show that the are higher correlation with the variables wt, disp, cyl and hp.Figure 2 - pair shows such correaltion and supports argument 1. 
-Further analysis to these variables must be then performed to answer the questions.
+b) However, the calculations show that there are higher correlation with the variables wt, disp, cyl and hp. Figure 2 - 'pairs' revealed such correaltion and supports argument 1. Further analysis to these variables must be then performed to answer the questions.
 
 - Boxplot mpg vs am
 
@@ -41,7 +40,7 @@ Further analysis to these variables must be then performed to answer the questio
 p<-ggplot(data = mtcars, aes(x = interaction(am), y = mpg)) + geom_boxplot()
 ```
 
--  Thi code determines close correlated variables.
+-  This code determines close correlated variables.
  
 
 ```{r echo=TRUE, results="hide", eval=FALSE}
@@ -49,7 +48,7 @@ mpgcor <- abs(data.frame(cor(mtcars))[1, ]);mpgcor1 <- order(mpgcor, decreasing 
 mpgcor2<- mpgcor1[1:5]; names(mtcars)[mpgcor2][1:5]
 ```
 
-- Please Refer to 'pair plot' correlation of variables
+- Please Refer to 'pairs plot' correlation of variables
  
 ```{r chunk_name3, echo=TRUE, results="hide", eval=FALSE}
 dta <- mtcars; dta.r <- abs(cor(dta)), dta.col <- dmat.color(dta.r), 
@@ -60,19 +59,19 @@ gap=.5, main="Variables Ordered by Correlation" )
 # Inference
 As further investigation is required, I’m using a t-test to provide a better insight about mpg and the transmission relation.
 The result of this analysis is always given in terms of a null hypothesis, being H0 and H1 the hypothesis.Two outcomes can be obtained with this analysis "Reject H0 in favour of H1" or "Do not reject H0". If the result shows a "Do not reject H0", this does not necessarily mean that the null hypothesis is true, it only suggests that there is not sufficient evidence against H0 in favor of H1. Rejecting the null hypothesis then, suggests that the alternative hypothesis may be true.
-Applying this concept to mpg and am
+Applying this concept to mpg and am.
 
 ```{r chunk_name4, echo=TRUE , results="show", eval=FALSE}
 t.test(mpg ~ am, data = mtcars)
 ```
 
 ### Observations: Inference 
-As shows in table above p-value = .00137
+As shown in the table above p-value = .00137
 This establishes that the null hypothesis is rejected and an alternative hypothesis exists. This test assumes these variables are each normally distributed when testing the null hypothesis.By default, this performs a two-sided test and assumes unequal variances. The p-value of the test is very low therefore rejecting the null hypothes. suggesting that the alternative hypothesis exists.
 The automatic and manual transmissions are from different populations.
 
 # Regression Analysis
-This analyis includes 4 models ass described below:
+This analyis includes 4 models as described below:
 
 1) m_0  'mg vs am'  
 ```{r chunk_name5, echo=TRUE, results="hide", eval=FALSE}
@@ -83,7 +82,7 @@ My first guess is to test directly the linear model between the variables mpg an
 
 m_0 yields a Residual standard error: 4.902 on 30 degrees of freedom with 174.147 mpg for manual transmission versus and increased 7.245 mpg for an automatic transmission. Although those are good figures I noticed that R-squared yield a value of 0.3598, which is rather low demonstrating the need to analyse more variables.
 
-2) m_1 is full model, 
+2) m_1 is a full model 
 ```{r chunk_name6, echo=TRUE, results="hide", eval=FALSE}
 model_1 <-  lm(mpg~., data=mtcars)
 ```
